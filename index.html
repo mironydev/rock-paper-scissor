@@ -14,22 +14,26 @@
     <button id="rock"
 
     onclick="playGame ('Rock');
+    scaleButton(rock);
     "
     
-    class="bg-gray-300 hover:bg-white duration-150 text-black font-bold text-2xl px-9 py-2 rounded-lg hover:scale-110">Rock <i class="fa-solid fa-hand-back-fist"></i></button>
+    class="bg-gray-300 duration-150 text-black font-bold text-2xl px-9 py-2 rounded-lg">Rock <i class="fa-solid fa-hand-back-fist"></i></button>
 
     <button id="paper"
     
     onclick="playGame ('Paper');
+    scaleButton(paper);
     "
     
-    class="bg-gray-300 hover:bg-white duration-150 text-black font-bold text-2xl px-8 py-2 rounded-lg hover:scale-110">Paper <i class="fa-solid fa-hand"></i></button>
+    class="bg-gray-300 duration-150 text-black font-bold text-2xl px-8 py-2 rounded-lg">Paper <i class="fa-solid fa-hand"></i></button>
 
     <button id="scissor"
     
-    onclick="playGame ('Scissor');"
+    onclick="playGame ('Scissor');
+    scaleButton(scissor);
+    "
     
-    class="bg-gray-300 hover:bg-white duration-150 text-black font-bold text-2xl px-4 py-2 rounded-lg hover:scale-110">Scissor <i class="fa-solid fa-hand-scissors"></i></button>
+    class="bg-gray-300 duration-150 text-black font-bold text-2xl px-4 py-2 rounded-lg">Scissor <i class="fa-solid fa-hand-scissors"></i></button>
 
   </div>
 
@@ -45,10 +49,10 @@
       localStorage.removeItem('score');
       updateScore();
       clearText();
-      resetScale();
+      scaleButton(reset);
       "
     
-    class="bg-red-500 text-white font-bold text-xl px-4 py-2 rounded-lg transition-all duration-150 ease-in-out">Reset Score</button>
+    class="bg-red-500 text-white font-bold sm:text-xl text-[16px] px-4 py-2 rounded-lg duration-150 ">Reset Score</button>
 
   </div>
 
@@ -127,14 +131,17 @@
       updateScore();
     }
 
-    function resetScale() {
-      const reset = document.getElementById('reset');
-      reset.classList.add('scale-[1.2]', 'bg-red-400');
+    function scaleButton(button) {
+      button.classList.add('scale-[1.2]');
       setTimeout(() => {
-        reset.classList.remove('scale-[1.2]', 'bg-red-400');
+        button.classList.remove('scale-[1.2]');
       }, 150);
     }
-    
+
+    const rock = document.getElementById('rock');
+    const paper = document.getElementById('paper');
+    const scissor = document.getElementById('scissor');    
+    const reset = document.getElementById('reset');
 
     function clearText() {
       document.querySelector('.js-result').innerHTML = '';
